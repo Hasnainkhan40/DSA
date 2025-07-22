@@ -71,6 +71,8 @@ Example 2:*/
         
         return ans;
     }
+
+    
 //arryr print
 
 void print(int arr[], int n, int i){
@@ -128,10 +130,10 @@ void digit(int num){
 
 int main() {
 
-    //print the all degit of this num 
-    int num = 674;
-    digit(num);
-    return 0;
+    // print the all degit of this num ****
+    // int num = 674;
+    // digit(num);
+    // return 0;
     
     
 // find the kye in string****-*

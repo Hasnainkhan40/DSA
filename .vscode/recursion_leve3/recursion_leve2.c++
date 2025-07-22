@@ -6,6 +6,22 @@ using namespace std;
 
 
 
+
+
+// ***check the arr is soterd***
+
+bool checkSotrt(vector<int>& arr, int& n, int i){
+    if(i == n-1){
+        return true;
+    }
+
+    if(arr[i+1] < arr[i]){
+        return false;
+    }
+
+    checkSotrt(arr, n, i+1);
+}
+
 // ***find element using binnary screche***
 
 int binarySearch(vector<int>& arr, int s, int e, int key){
@@ -28,33 +44,44 @@ int binarySearch(vector<int>& arr, int s, int e, int key){
 
 }
 
-// ***check the arr is soterd***
-
-bool checkSotrt(vector<int>& arr, int& n, int i){
-    if(i == n-1){
-        return true;
+void printSubSequenc(string str, string ans , int i){
+    if(i >= str.length()){
+        cout<< ans << endl;
+        return;
     }
 
-    if(arr[i+1] < arr[i]){
-        return false;
-    }
+    printSubSequenc(str, ans, i+1);
+    
+    ans.push_back(str[i]);
+    printSubSequenc(str, ans, i+1);
 
-    checkSotrt(arr, n, i+1);
 }
 
 
 int main(){
+    
+    // most importarnt 
+    // print sub sequences
 
+    string str = "abc";
+    string ans = " ";
+    int i =0;
 
-    vector<int> arr{1,2,3,4,5,6,7,8,9, 100};
-    int n = arr.size();
-    int s = 0;
-    int e = n-1;
-    int key= 100;
+    printSubSequenc(str, ans, i);
+    return 0;
 
-    int ans = binarySearch(arr, s, e, key);
-    cout<< ans << " ";
+    // ***find element using binnary screche***
+    // vector<int> arr{1,2,3,4,5,6,7,8,9, 100};
+    // int n = arr.size();
+    // int s = 0;
+    // int e = n-1;
+    // int key= 100;
+
+    // int ans = binarySearch(arr, s, e, key);
+    // cout<< ans << " ";
  
+
+    
     // ***check the arr is soterd***
     // vector<int> arr{1,2,3,4,5,6,7,8,9};
     // int n = 9;
