@@ -61,7 +61,7 @@ void insertAtTail(Node* &head, Node* &tail,int data){
 };
 
  /*FIND THE LENGTH*/
-int findelen(Node* &head){
+int findlen(Node* &head){
     int len = 0;
     Node* temp = head;
     while (temp != nullptr)
@@ -85,7 +85,7 @@ void insertAtPos(int data,int pos, Node* &head, Node* &tail){
         insertAtHead(head, tail, data);
         return;
     }
-    int len = findelen(head);
+    int len = findlen(head);
     if(pos >= len){
         insertAtTail(head, tail, data);
         return;
@@ -110,6 +110,58 @@ void insertAtPos(int data,int pos, Node* &head, Node* &tail){
 };
 
 
+
+void deletNode(int pos, Node* &head,Node* &tail){
+
+    if(head == nullptr){
+        cout<< "Empty LL"  << endl;
+        return;
+    }
+
+    //delet first node
+    if(pos == 1){
+        Node* temp = head;
+        head =  head->next;
+        temp->next = nullptr;
+        delete temp;
+        return;
+    }
+
+    //delet last node
+    int len = findlen(head);
+
+    if(pos == len){
+        int i=1;
+        Node* prev = head; 
+        while (i < pos-1)
+        {
+            prev= prev->next;
+            i++;
+        }
+        prev->next=nullptr;
+        Node* temp = tail;
+        tail = prev;
+        delete temp;
+        return;
+
+    }
+
+    int i = 1;
+    Node* prev = head;
+    while (i < pos-1)
+    {
+        prev = prev->next;
+        i++;
+    }
+
+    Node* curr  = prev->next;
+    prev->next = curr->next;
+    curr->next = nullptr; 
+    delete curr;
+    
+}
+
+
 int main(){
     
 
@@ -132,15 +184,18 @@ int main(){
     // secound->next = thard;
     // thard->next = nullptr;
 
-    cout<<"LL Printing"<<endl;
-    printing(head);
-
     cout<< "After print" <<endl;
     
 
     /*INSERT AT ANY POSITION*/
     insertAtPos(101, 6, head, tail);
     printing(head);
+    cout << "Delet" <<endl << endl;
+    deletNode(4, head, tail);
+    
+     printing(head);
+     cout << endl << endl;
+
 
 
     return 0;
