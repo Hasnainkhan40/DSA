@@ -69,6 +69,7 @@ int findlen(Node* &head){
     return len;
 }
 
+//IMPORTEMT REVES THE K NODE
 Node* reversKNods(Node* &head, int k){
     if(head == nullptr){
         return nullptr;
@@ -97,12 +98,80 @@ Node* reversKNods(Node* &head, int k){
     }
     return prev;
     
-
-
 }
 
 
 
+bool isCirculer(Node* &head){
+    if(head == nullptr){
+        cout<< "ll is empty"<< endl;
+        return false;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr)
+    {
+        fast= fast->next;
+        if(fast != nullptr){
+            fast= fast->next;
+            slow= slow->next;
+        }
+        if(slow == fast){
+            return true;
+        }
+    
+    }
+    return false;
+    
+
+}
+
+
+//FIND THE STARTIN NODE IN CIRCAL LL
+Node* flindStartingNode(Node* &head){
+    if(head == nullptr){
+        cout<< "ll is empty"<< endl;
+        return nullptr;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr)
+    {
+        fast= fast->next;
+        if(fast != nullptr){
+            fast= fast->next;
+            slow= slow->next;
+        }
+        if(slow == fast){
+            slow = head;
+            break;
+        }
+    
+    }
+   while (slow != fast)
+   {
+    slow = slow->next;
+    fast = fast->next;
+   }
+   return slow;
+   
+    
+
+}
+//Reverse LL
+Node* solve(Node* &prev, Node* &curr){
+    if(curr == nullptr){
+        return  prev; 
+    }
+    Node* temp = curr->next;
+    curr->next = prev;
+    return solve(curr, temp);
+  
+}
 
 
 int main(){
@@ -119,13 +188,18 @@ int main(){
      thard->next = fourth;
      fourth->next = fifth;
      fifth->next = sixth;
-     sixth->next = nullptr;
-     printing(head);
+     sixth->next = fifth;
+    
+    cout<< isCirculer(head)<< endl;
+
+    cout<< flindStartingNode(head) ->data << endl;
+
+    //  printing(head);
 
     // cout<<"Print the mid  " << getmeddel(head) ->data<<endl;
-    cout<<endl;
-    head = reversKNods(head, 4);
-    printing(head);
+    // cout<<endl;
+    // head = reversKNods(head, 4);
+    // printing(head);
 
 
 }
