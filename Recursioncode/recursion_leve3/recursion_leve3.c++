@@ -44,6 +44,9 @@ int binarySearch(vector<int>& arr, int s, int e, int key){
 
 }
 
+ // most importarnt includ and exclud
+    // ***print sub sequences***
+
 void printSubSequenc(string str, string ans , int i){
     if(i >= str.length()){
         cout<< ans << endl;
@@ -61,14 +64,14 @@ void printSubSequenc(string str, string ans , int i){
 int main(){
     
     // most importarnt 
-    // print sub sequences
+    // ***print sub sequences***
 
-    string str = "abc";
-    string ans = " ";
-    int i =0;
+    // string str = "abc";
+    // string ans = " ";
+    // int i =0;
 
-    printSubSequenc(str, ans, i);
-    return 0;
+    // printSubSequenc(str, ans, i);
+    // return 0;
 
     // ***find element using binnary screche***
     // vector<int> arr{1,2,3,4,5,6,7,8,9, 100};

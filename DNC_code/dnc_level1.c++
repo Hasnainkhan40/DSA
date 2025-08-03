@@ -101,7 +101,7 @@ int patitionLogic(int arr[], int s, int e){
             j--;
         }
 
-          if (i <= pivitIndex && j > pivitIndex)
+        if (i <= pivitIndex && j > pivitIndex)
         {
             swap(arr[i], arr[j]);
         }
