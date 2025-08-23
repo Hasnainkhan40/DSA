@@ -102,6 +102,7 @@ Node* reversKNods(Node* &head, int k){
 
 
 
+//FIND THE STARTIN NODE IN CIRCAL LL
 bool isCirculer(Node* &head){
     if(head == nullptr){
         cout<< "ll is empty"<< endl;

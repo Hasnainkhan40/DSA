@@ -6,6 +6,11 @@
         "xstring": "cpp",
         "ostream": "cpp",
         "unordered_map": "cpp",
-        "utility": "cpp"
-    }
+        "utility": "cpp",
+        "stack": "cpp",
+        "queue": "cpp",
+        "map": "cpp",
+        "xtree": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

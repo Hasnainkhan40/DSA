@@ -97,8 +97,8 @@ void levelorderTbfs(Node* root){
                 q.push(NULL);
             }
         }else
-        {
-            cout<< front->data<< " ";
+        { 
+            cout<< front->data<< " "; 
             if (front->left != nullptr)
             {
                q.push(front->left);
@@ -151,6 +151,44 @@ void printTopView(Node* root){
 }
 
 
+
+//PRINT THE BOTTOM VIEW 
+void printBottomView(Node* root){
+    map<int,int> hdToNodemap;
+    queue<pair<Node*, int>> q;
+    q.push(make_pair(root, 0));
+
+    while (!q.empty())
+    {
+        pair<Node*, int> temp = q.front();
+        q.pop();
+       
+        Node* frontNode  = temp.first;
+        int hd = temp.second;
+
+       
+            hdToNodemap[hd] = frontNode->data;
+        
+
+        if (frontNode->left != NULL)
+        {
+            q.push(make_pair(frontNode->left, hd-1));
+        }
+
+          if (frontNode->right != NULL)
+        {
+            q.push(make_pair(frontNode->right, hd+1));
+        }
+        
+    }
+    cout<< "Printing Tree " << endl;
+    for(auto i : hdToNodemap){
+        cout<< i.second <<" ";
+    }
+    
+}
+
+//PRINT LEFT VIEW
 void printLeftView(Node* root, int level, vector<int> &leftViwe){
     if(root == NULL){
         return;
@@ -165,7 +203,7 @@ void printLeftView(Node* root, int level, vector<int> &leftViwe){
     
 }
 
-
+//PRINT RIGHT VIEW
 void printRightView(Node* root, int level, vector<int> &leftViwe){
     if(root == NULL){
         return;
@@ -180,13 +218,83 @@ void printRightView(Node* root, int level, vector<int> &leftViwe){
     
 }
 
+//PRINT LEFT BOUNDARY
+void printLeftBoundary(Node* root){
+    if(root == NULL){
+        return;
+    }
+    if (root->left == NULL && root->right== NULL)
+    {
+        return;
+    }
+    cout<<root->data<<" ";
+    if (root->left != NULL)
+    {
+        printLeftBoundary(root->left);
+    }
+    else
+    {
+        printLeftBoundary(root->right);
+    }
+
+}
+//PRINT RIGHT BOUNDARY
+void printRightBoundary(Node* root){
+    if(root == NULL){
+        return;
+    }
+    if (root->left == NULL && root->right== NULL)
+    {
+        return;
+    }
+
+    if (root->right != NULL)
+    {
+        printRightBoundary(root->right);
+    }
+    if(root->left != NULL)
+    {
+        printRightBoundary(root->left);
+    }
+    cout<<root->data<<" ";
+}
+
+//PRINT ALL LEEF BOUNDARY
+void printLeefBoundary(Node* root){
+    if(root == NULL){
+        return;
+    }
+    if (root->left == NULL && root->right== NULL)
+    {
+        cout<<root->data<< " ";
+    }
+    printLeefBoundary(root->left);
+        printLeefBoundary(root->right);
+}
+
+//PRINT ALL BOUNDARY
+void printBoundaryOfTree(Node* root){
+    if(root == NULL){
+        return;
+    }
+    cout<<root->data<<" ";
+    printLeftBoundary(root->left);
+    printLeefBoundary(root->left);
+    printLeefBoundary(root->right);
+    printRightBoundary(root->right);
+}
+
+
+
 
 //10 20 40 -1 -1 50 70 110 -1 -1 111 -1 -1 80 -1 -1 30 -1 60 -1 90 112 -1 -1 113 -1 -1 
 int main(){
     Node* root = createTree();
 
     levelorderTbfs(root);
+    printBoundaryOfTree(root);
     // printTopView(root);
+   // printBottomView(root);
     
     //vector<int> leftView;
 
@@ -194,13 +302,13 @@ int main(){
 
   
     //printLeftView(root, 0, leftView);
-    printRightView(root, 0, rightView);
+    //printRightView(root, 0, rightView);
     
-    cout<< "Printing the tree"<<endl;
-    for (int i = 0; i < rightView.size(); i++)
-    {
-        cout<< rightView[i] << " ";
-    }
+    // cout<< "Printing the tree"<<endl;
+    // for (int i = 0; i < rightView.size(); i++)
+    // {
+    //     cout<< rightView[i] << " ";
+    // }
     
 
     // cout<< "Printing Preorder: ";

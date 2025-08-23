@@ -52,7 +52,7 @@ Node* reversell(Node* &head){
 //LL IS PLAINDROM
 bool checkPalindrom(Node* &head){
     if(head == nullptr){
-        cout<< " LL IS EMPTY"<<endl;
+        
         return false;
     }
     if(head->next == nullptr){
@@ -188,8 +188,12 @@ Node* sort2(Node* &head){
     delete temp;
 
 
+ 
     return zeroHead;
 }
+
+
+//ADD TOW LL
 
 Node* addTwoll(Node* &head1, Node* &head2){
     head1 = reversell(head1);
