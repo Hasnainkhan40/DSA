@@ -1,1 +1,0 @@
- // cout<< "Inserting  " << word <<endl;
