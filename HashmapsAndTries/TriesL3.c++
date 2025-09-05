@@ -71,7 +71,6 @@ void storeSuggestion(TriesNode* curr, vector<string> &temp, string prefix){
         
     }
     
-    
 }
 
 
