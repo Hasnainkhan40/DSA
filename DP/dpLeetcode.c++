@@ -265,3 +265,76 @@ int solveTeboSO(string& a, string& b){
         return ans;
     }
 };
+
+
+
+class Solution {
+public:
+
+
+ int solveRecur(int coins) {
+        if(coins == 0){
+            return 0;
+        }
+         if(coins < 0){
+            return INT_MAX;
+            
+        }
+        int mini = INT_MAX;
+        for(int i=1; i<=coins; i++){
+            int ans = solveRecur(coins - i* i);
+            if(ans != INT_MAX){
+                mini = min(mini, ans+1);
+            }
+        }
+    
+        return mini;
+    }
+
+ int solveMemo(int n,  vector<int>& dp) {
+        if(n == 0){
+            return 0;
+        }
+         if(n < 0){
+            return INT_MAX;
+            
+        }
+         if(dp[n] != -1){
+            return dp[n];
+        }
+        int mini = INT_MAX;
+        for(int i=1; i*i<=n; i++){
+            int ans = solveMemo(n - i * i, dp);
+            if(ans != INT_MAX){
+                mini = min(mini, ans+1);
+            }
+        }
+        dp[n] = mini;
+    
+        return dp[n];
+    }
+
+
+int solveTebu(int n) {
+         vector<int> dp(n+1, INT_MAX);
+         dp[0] = 0;
+       
+        for(int val = 1; val<=n; val++){
+             int mini = INT_MAX;
+            for(int i=1; i*i<=val; i++){
+                int ans = dp[val - i * i];
+                if(ans != INT_MAX){
+                    mini = min(mini, ans+1);
+                }
+            }
+        dp[val] = mini;
+        }
+        return dp[n];
+    }
+
+    int numSquares(int n) {
+        vector<int> dp(n+1, -1);
+        int ans = solveTebu(n);
+        return ans;
+    }
+};
