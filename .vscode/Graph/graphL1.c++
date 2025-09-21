@@ -10,35 +10,35 @@ using namespace std;
 
 template<typename T>
 
-//THIS IS THE NON WEIGHTED GRAPH
-// class Graph {
-// public:
-//     unordered_map<T, list<T>> adjList;
+THIS IS THE NON WEIGHTED GRAPH
+class Graph {
+public:
+    unordered_map<T, list<T>> adjList;
 
-//     void addEdge(T u, T v, bool direction) {
-//         if (direction == 1) {
-//             // Directed edge
-//             adjList[u].push_back(v);
-//         } else {
-//             // Undirected edge
-//             adjList[u].push_back(v);
-//             adjList[v].push_back(u);
-//         }
-//         cout << "Printing the Graph:" << endl;
-//         printAdjList();
-//         cout << endl;
-//     }
+    void addEdge(T u, T v, bool direction) {
+        if (direction == 1) {
+            // Directed edge
+            adjList[u].push_back(v);
+        } else {
+            // Undirected edge
+            adjList[u].push_back(v);
+            adjList[v].push_back(u);
+        }
+        cout << "Printing the Graph:" << endl;
+        printAdjList();
+        cout << endl;
+    }
 
-//     void printAdjList() {
-//         for (auto i : adjList) {
-//             cout << i.first << ": { ";
-//             for (auto p : i.second) {
-//                 cout << "{ " << p << ", "  << "} ";
-//             }
-//             cout << "}" << endl;
-//         }
-//     }
-// };
+    void printAdjList() {
+        for (auto i : adjList) {
+            cout << i.first << ": { ";
+            for (auto p : i.second) {
+                cout << "{ " << p << ", "  << "} ";
+            }
+            cout << "}" << endl;
+        }
+    }
+};
 
 
 
