@@ -167,7 +167,7 @@ void shortestPathDijk(int src, int n) {
     set<pair<int, int>> st;         // {distance, node}
     
     dist[src] = 0;
-    st.insert(make_pair(0, src));// distance array
+    st.insert(make_pair(0, src));
 
     while (!st.empty()) {
         auto topElement = *(st.begin());
