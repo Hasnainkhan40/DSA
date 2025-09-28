@@ -188,6 +188,7 @@ void shortestPathDijk(int src, int n) {
     }
 
     cout << "Shortest distances from " << src << ":\n";
+    out << "Shortest distances from " << src << ":\n";
     for (int i = 0; i < n; i++) {
         cout << "Node " << i << " -> " << dist[i] << endl;
     }
